@@ -1,0 +1,144 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>En Mantenimiento | MKDigitalNic</title>
+<link rel="stylesheet" href="css/styles.css">
+<style>
+    /* --- GLOBAL --- */
+    body {
+        margin: 0;
+        height: 100vh;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        background: linear-gradient(135deg, #0a0f1f, #1a2238);
+        color: #eaeaea;
+        font-family: 'Inter', sans-serif;
+        overflow: hidden;
+        position: relative;
+    }
+
+    .container {
+        text-align: center;
+        z-index: 1;
+        max-width: 600px;
+        padding: 20px;
+    }
+
+    /* --- TÍTULO GLITCH --- */
+    h2 {
+        font-size: 2.5rem;
+        margin-bottom: 20px;
+        position: relative;
+        color: var(--primary);
+        animation: glitch 1.5s infinite;
+    }
+
+    @keyframes glitch {
+        0% { text-shadow: 2px 0 var(--secondary), -2px 0 var(--primary); }
+        20% { text-shadow: -2px 2px var(--secondary), 2px -2px var(--primary); }
+        40% { text-shadow: 2px -2px var(--secondary), -2px 2px var(--primary); }
+        60% { text-shadow: -2px -2px var(--secondary), 2px 2px var(--primary); }
+        80% { text-shadow: 2px 2px var(--secondary), -2px -2px var(--primary); }
+        100% { text-shadow: 2px 0 var(--secondary), -2px 0 var(--primary); }
+    }
+
+    /* --- ICONO CENTRAL --- */
+    h1 {
+        font-size: 6rem;
+        margin-bottom: 15px;
+        animation: pulse 2s infinite;
+        color: var(--primary);
+    }
+
+    @keyframes pulse {
+        0%,100% { transform: scale(1); opacity: 0.9; }
+        50% { transform: scale(1.1); opacity: 1; }
+    }
+
+    /* --- TEXTO --- */
+    p {
+        color: #aaa;
+        margin-bottom: 30px;
+        font-size: 1.1rem;
+        line-height: 1.6;
+    }
+
+    /* --- BOTÓN MODERNO --- */
+    .btn-home {
+        display: inline-block;
+        padding: 14px 30px;
+        background: var(--primary);
+        color: white;
+        border-radius: 10px;
+        text-decoration: none;
+        font-weight: 600;
+        box-shadow: 0 4px 15px rgba(76,111,255,0.4);
+        transition: 0.3s ease;
+    }
+
+    .btn-home:hover {
+        background: var(--secondary);
+        box-shadow: 0 6px 20px rgba(0,212,255,0.6);
+        transform: translateY(-3px);
+    }
+
+    /* --- LINEAS TECH DE FONDO --- */
+    body::before {
+        content: '';
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 200%;
+        height: 200%;
+        background-image: repeating-linear-gradient(0deg, rgba(255,255,255,0.02) 0px, rgba(255,255,255,0.02) 1px, transparent 1px, transparent 20px),
+                          repeating-linear-gradient(90deg, rgba(255,255,255,0.02) 0px, rgba(255,255,255,0.02) 1px, transparent 1px, transparent 20px);
+        animation: moveLines 25s linear infinite;
+        z-index: 0;
+    }
+
+    @keyframes moveLines {
+        0% { transform: translate(0,0); }
+        100% { transform: translate(-50px,-50px); }
+    }
+
+    /* --- PARTICULAS FLOTANTES --- */
+    .particle {
+        position: absolute;
+        border-radius: 50%;
+        background: rgba(76,111,255,0.6);
+        animation: float 10s linear infinite;
+        opacity: 0.7;
+    }
+
+    @keyframes float {
+        0% { transform: translateY(0) translateX(0); opacity: 0.5; }
+        50% { opacity: 1; }
+        100% { transform: translateY(-800px) translateX(300px); opacity: 0; }
+    }
+</style>
+</head>
+<body>
+    <div class="container">
+        <h1>🚧</h1>
+        <h2>Página en Mantenimiento</h2>
+        <p>Estamos mejorando la web para ofrecerte la mejor experiencia. ¡Vuelve pronto!</p>
+    </div>
+
+    <!-- PARTICULAS -->
+    <script>
+        const numParticles = 20;
+        for(let i = 0; i < numParticles; i++){
+            const particle = document.createElement('div');
+            particle.classList.add('particle');
+            particle.style.width = particle.style.height = `${Math.random()*8+4}px`;
+            particle.style.left = `${Math.random()*100}vw`;
+            particle.style.top = `${Math.random()*100}vh`;
+            particle.style.animationDuration = `${Math.random()*10+5}s`;
+            document.body.appendChild(particle);
+        }
+    </script>
+</body>
+</html>
